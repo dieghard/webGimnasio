@@ -1,0 +1,10 @@
+user: alumno@alumno.com
+pass : Drowssap  ( D mayuscula el resto minuscula)
+
+user: profesor@profesor.com
+pass : Drowssap  ( D mayuscula el resto minuscula)
+
+user: dieghard@gmail.com
+pass : =vT6=vMP#7ak@Ft
+
+el ultimo usuario es al administrador 
