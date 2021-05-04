@@ -1,0 +1,59 @@
+﻿@model IEnumerable<webGimnasio.Models.ClasesDiarias>
+
+@{
+    ViewData["Title"] = "CLASES DIARIAS";
+}
+
+<h1>Clases Diarias</h1>
+
+<p>
+    <a asp-action="Create">Inscribase a una Clase </a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Profesor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Alumno)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Clase)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DiaHora)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Observaciones)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Profesor.NombreApellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Alumno.NombreApellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Clase.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiaHora)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Observaciones)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Modificar</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Detalle</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

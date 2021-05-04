@@ -1,0 +1,51 @@
+﻿@model webGimnasio.Models.ClasesDiarias
+
+@{
+    ViewData["Title"] = "Eliminar Clases";
+}
+
+<h1>Eliminar Clase</h1>
+
+<h3>¿Esta seguro que desea eliminar la clase?</h3>
+<div>
+    <h4>ClasesDiarias</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Profesor)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Profesor.NombreApellido)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Alumno)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Alumno.NombreApellido)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Clase)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Clase.Descripcion)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DiaHora)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DiaHora)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Observaciones)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Observaciones)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+        <a asp-action="Index">Volver a la lista</a>
+    </form>
+</div>

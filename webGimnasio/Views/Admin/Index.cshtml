@@ -1,0 +1,54 @@
+﻿@model IEnumerable<webGimnasio.Models.ApplicationUser>
+@using webGimnasio.Models;
+ 
+@{
+    ViewData["Title"] = "Usuarios";
+}
+
+<h1>Usuarios</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreApellido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Roles)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreApellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @if (item.Roles.Count > 0)
+                {
+                    @(((List<ApplicationRole>)ViewBag.Roles).FirstOrDefault(x => x.Id == item.Roles.First().RoleId).Name)
+                }
+                else
+                {
+                    @Html.Raw("Sin rol asignado")
+                }
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Modificar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<div>
+    <a asp-action="Index">Volver a la lista</a>
+</div>

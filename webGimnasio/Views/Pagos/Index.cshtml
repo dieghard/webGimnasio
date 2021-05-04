@@ -1,0 +1,80 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@model IEnumerable<webGimnasio.Models.Pagos>
+@{
+    ViewData["Title"] = "Pagos";
+}
+
+
+@if (SignInManager.IsSignedIn(User))
+{
+    @if (User.IsInRole("Administrador"))
+    {
+        <p>
+            <a asp-action="Create">Ingresar nuevo Pago</a>
+        </p>
+    }
+}
+<h1>Pagos de socios</h1>
+@if (SignInManager.IsSignedIn(User))
+{
+    @if (User.IsInRole("Administrador"))
+    {
+        <p>
+            <a asp-action="Create">Ingrese un Pago</a>
+        </p>
+    }
+}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Fecha)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Alumno)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Importe)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Observaciones)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Fecha)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Alumno.NombreApellido)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Importe)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Observaciones)
+                        </td>
+                        <td>
+                            @if (SignInManager.IsSignedIn(User))
+                            {
+                                if (User.IsInRole("Administrador"))
+                                {
+                                    <a asp-action="Edit" asp-route-id="@item.Id">Modificar</a>
+                                    <a asp-action="Details" asp-route-id="@item.Id"> Detalle </a>
+                                    <a asp-action="Delete" asp-route-id="@item.Id"> Eliminar </a>
+                                }
+                            }
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>

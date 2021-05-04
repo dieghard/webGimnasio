@@ -1,0 +1,24 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@{
+    ViewData["Title"] = " GIMNASIO COLUM EL ESPARTANO";
+}
+<div class="row">
+    <div class="col">
+        <img src="./img/LogoGim.jpg">
+    </div>
+    <div class="col">
+        <div class="text-center">
+            <h1 class="display-4">Bienvenidos</h1>
+            <p>Bienvenidos a la pagina del Gimnasio de COLUM el Espartano.</p>
+            @if (!SignInManager.IsSignedIn(User))
+            {
+        <p>
+            Por favor, <a class="btn btn-primary" asp-area="Identity" asp-page="/Account/Login">Ingrese</a> o   <a class="btn btn-success" asp-area="Identity" asp-page="/Account/Register">Registrese</a> para tener acceso a las clases y a mas información
+        </p>
+            }
+        </div>
+    </div>
+</div>
